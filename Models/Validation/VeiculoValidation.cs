@@ -7,7 +7,7 @@ using System.Web;
 
 namespace MyCarWebApi.Models
 {
-    public class Veiculo
+    public class VeiculoValidation
     {
         [Key]
         public int IdVeiculo { get; set; }

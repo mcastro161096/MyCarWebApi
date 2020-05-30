@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyCarWebApi
-{[Table("ServicosPrestados")]
-    public class ServicoPrestado
+{
+    [Table("ServicosPrestados")]
+    public class ServicoPrestadoValidation
     {
         [Key]
         public int IdServico { get; set; }

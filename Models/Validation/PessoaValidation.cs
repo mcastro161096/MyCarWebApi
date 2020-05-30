@@ -8,7 +8,7 @@ using System.Web.Mvc;
 namespace MyCarWebApi
 {
     [Table("Pessoas")]
-    public class Pessoa
+    public class PessoaValidation
     {
         [Key]
         public int IdPessoa { get; set; }

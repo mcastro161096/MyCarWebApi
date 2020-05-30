@@ -8,7 +8,7 @@ using System.Web;
 namespace MyCarWebApi.Models
 {
     [Table("PessoaContatos")]
-    public class PessoaContato
+    public class PessoaContatoValidation
     {
         [Key]
         public int IdContato { get; set; }

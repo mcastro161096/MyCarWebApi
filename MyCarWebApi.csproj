@@ -187,9 +187,6 @@
     </Compile>
     <Compile Include="Models\Entities\Pessoa.cs" />
     <Compile Include="Models\Entities\PessoaContato.cs" />
-    <Compile Include="Models\Entities\PessoaDocumento.cs" />
-    <Compile Include="Models\Entities\PessoaEndereco.cs" />
-    <Compile Include="Models\Entities\PessoaPapel.cs" />
     <Compile Include="Models\Entities\ServicoPrestado.cs" />
     <Compile Include="Models\Entities\Servico.cs" />
     <Compile Include="Models\Entities\Veiculo.cs" />
@@ -201,19 +198,11 @@
     <Compile Include="Models\Mapping\ServicoPrestadoMapping.cs" />
     <Compile Include="Models\Mapping\ServicoMapping.cs" />
     <Compile Include="Models\Mapping\VeiculoMapping.cs" />
-    <Compile Include="Models\Validation\EstadoCivil.cs" />
-    <Compile Include="Models\Validation\Papel.cs" />
-    <Compile Include="Models\Validation\Pessoa.cs" />
-    <Compile Include="Models\Validation\PessoaContato.cs" />
-    <Compile Include="Models\Validation\PessoaDocumento.cs" />
-    <Compile Include="Models\Validation\PessoaEndereco.cs" />
-    <Compile Include="Models\Validation\PessoaPapel.cs" />
-    <Compile Include="Models\Validation\ServicoPrestado.cs" />
-    <Compile Include="Models\Validation\Sexo.cs" />
-    <Compile Include="Models\Validation\TipoDeContato.cs" />
-    <Compile Include="Models\Validation\TipoDePessoa.cs" />
-    <Compile Include="Models\Validation\TipoDeServico.cs" />
-    <Compile Include="Models\Validation\Veiculo.cs" />
+    <Compile Include="Models\Validation\PessoaValidation.cs" />
+    <Compile Include="Models\Validation\PessoaContatoValidation.cs" />
+    <Compile Include="Models\Validation\ServicoValidation.cs" />
+    <Compile Include="Models\Validation\ServicoPrestadoValidation.cs" />
+    <Compile Include="Models\Validation\VeiculoValidation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
