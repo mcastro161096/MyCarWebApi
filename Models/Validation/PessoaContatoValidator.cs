@@ -1,16 +1,19 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity.ModelConfiguration;
 using System.Linq;
 using System.Web;
 
 namespace MyCarWebApi.Models
 {
-   
-    public class ServicoValidation
+    public class PessoaContatoValidator : AbstractValidator<PessoaContato>
     {
-       
+        public PessoaContatoValidator()
+        {
+
+        }
+
     }
 }

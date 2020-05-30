@@ -198,11 +198,11 @@
     <Compile Include="Models\Mapping\ServicoPrestadoMapping.cs" />
     <Compile Include="Models\Mapping\ServicoMapping.cs" />
     <Compile Include="Models\Mapping\VeiculoMapping.cs" />
-    <Compile Include="Models\Validation\PessoaValidation.cs" />
-    <Compile Include="Models\Validation\PessoaContatoValidation.cs" />
-    <Compile Include="Models\Validation\ServicoValidation.cs" />
-    <Compile Include="Models\Validation\ServicoPrestadoValidation.cs" />
-    <Compile Include="Models\Validation\VeiculoValidation.cs" />
+    <Compile Include="Models\Validation\PessoaValidator.cs" />
+    <Compile Include="Models\Validation\PessoaContatoValidator.cs" />
+    <Compile Include="Models\Validation\ServicoValidator.cs" />
+    <Compile Include="Models\Validation\ServicoPrestadoValidator.cs" />
+    <Compile Include="Models\Validation\VeiculoValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
