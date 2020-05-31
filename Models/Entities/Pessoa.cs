@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
@@ -50,8 +51,7 @@ namespace MyCarWebApi.Models
 
         public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
 
-
-
+        public virtual ICollection<Veiculo> Veiculos { get; set; }
 
 
 

@@ -192,9 +192,6 @@
     <Compile Include="Models\Entities\Veiculo.cs" />
     <Compile Include="Models\Mapping\PessoaMapping.cs" />
     <Compile Include="Models\Mapping\PessoaContatoMapping.cs" />
-    <Compile Include="Models\Mapping\PessoaDocumentoMapping.cs" />
-    <Compile Include="Models\Mapping\PessoaEnderecoMapping.cs" />
-    <Compile Include="Models\Mapping\PessoaPapelMapping.cs" />
     <Compile Include="Models\Mapping\ServicoPrestadoMapping.cs" />
     <Compile Include="Models\Mapping\ServicoMapping.cs" />
     <Compile Include="Models\Mapping\VeiculoMapping.cs" />
