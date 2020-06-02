@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@ namespace MyCarWebApi.Models
 
     public class Pessoa
     {
-        public int IdPessoa { get; set; }
+        public int Id { get; set; }
 
         public string Nome { get; set; }
 
@@ -47,10 +48,10 @@ namespace MyCarWebApi.Models
 
         public string Senha { get; set; }
 
-        public DateTime DataCadastro { get; private set; } = DateTime.Today;
-
+        public DateTime DataCadastro { get; private set; } 
+        [JsonIgnore]
         public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
-
+        [JsonIgnore]
         public virtual ICollection<Veiculo> Veiculos { get; set; }
 
 

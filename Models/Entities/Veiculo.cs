@@ -32,7 +32,8 @@ namespace MyCarWebApi.Models
 
         public bool Ativo { get; set; }
         
-        public DateTime Dataatualizacao { get; set; }
+        [JsonIgnore]
+        public DateTime Dataatualizacao { get; private set; }
 
     }
 }

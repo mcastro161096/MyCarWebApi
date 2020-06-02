@@ -9,7 +9,7 @@ using System.Web;
 
 namespace MyCarWebApi.Models
 {
-    public class VeiculoValidator : AbstractValidator<Veiculo>
+    public class VeiculoValidator : AbstractValidator<Veiculo> 
     {
         public VeiculoValidator()
         {
@@ -19,7 +19,7 @@ namespace MyCarWebApi.Models
                 .Length(1, 20).WithMessage("A marca deve ter no mínimo {minLength} e no máximo {maxLength} caracteres. ");
             RuleFor(v => v.Modelo).NotEmpty().WithMessage("O campo modelo  deve ser preenchido")
                 .Length(1, 20).WithMessage("O modelo deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
-            RuleFor(v => v.Serie).Length(1, 20).WithMessage("A serie deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(v => v.Serie).Length(0, 20).WithMessage("A serie deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
 
             RuleFor(v => v.Ano).NotEmpty().WithMessage("O campo ano  deve ser preenchido")
                 .Length(4, 4).WithMessage("O ano deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
