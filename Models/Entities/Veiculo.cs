@@ -13,7 +13,6 @@ namespace MyCarWebApi.Models
        
         public int Id { get; set; }
 
-       
         public int PessoaId { get; set; }
         [JsonIgnore]
         public virtual Pessoa Pessoa { get; set; }
@@ -30,10 +29,13 @@ namespace MyCarWebApi.Models
 
         public string Cor { get; set; }
 
-        public bool Ativo { get; set; }
+        public bool Ativo { get; set; } = true;
+
+        [JsonIgnore]
+        public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
         
         [JsonIgnore]
-        public DateTime Dataatualizacao { get; private set; }
+        public virtual ICollection<ServicoPrestado> ServicosPrestados { get; set; }
 
     }
 }

@@ -21,6 +21,9 @@ namespace MyCarWebApi.Models
             Property(m => m.Serie).HasMaxLength(20);
             Property(m => m.Ano).IsRequired().HasMaxLength(4);
             Property(m => m.Cor).IsRequired().HasMaxLength(20);
+            Property(m => m.Ativo).IsRequired();
+            Property(m => m.Dataatualizacao).IsRequired();
+
 
             HasRequired<Pessoa>(v => v.Pessoa).WithMany(p => p.Veiculos)
                                                 .WillCascadeOnDelete();
