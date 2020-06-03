@@ -181,6 +181,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VeiculosController.cs" />
     <Compile Include="Filters\BasicAuhtenticationAttribute.cs" />
@@ -253,6 +254,7 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
+    <Content Include="Utils\jsonPessoa.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
