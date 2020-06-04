@@ -206,6 +206,7 @@
     <Compile Include="Models\Validation\ServicoPrestadoValidator.cs" />
     <Compile Include="Models\Validation\VeiculoValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Messages\MsgValidacao.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -253,7 +254,7 @@
     </Content>
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
-    <Content Include="Utils\jsonPessoa.json" />
+    <Content Include="Utils\JsonsParaTestesDeRequisicao\jsonPessoa.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MyCarWebApi.Models;
+using MyCarWebApi.Utils.Messages;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,52 +12,54 @@ namespace MyCarWebApi.Models
 {
     public class PessoaValidator : AbstractValidator<Pessoa>
     {
+        private MsgValidacao Msg = new MsgValidacao();
         public PessoaValidator()
         {
-            RuleFor(p => p.Nome).NotEmpty().WithMessage("O campo nome  deve ser preenchido.")
-            .Length(1, 100).WithMessage(" O nome  deve ter no mínimo {MinLength} e no máximo {MaxLength} caracteres.");
+
+            RuleFor(p => p.Nome).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Nome"))
+            .Length(1, 100).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Nome"));
             
-            RuleFor(p => p.Sobrenome).NotEmpty().WithMessage("O campo sobrenome  deve ser preenchido.")
-                .Length(1, 100).WithMessage(" O sobrenome deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Sobrenome).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Sobrenome"))
+                .Length(1, 100).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Sobrenome"));
            
-            RuleFor(p => p.Tipo).NotEmpty().WithMessage("O campo tipo deve ser preenchido.")
-                .Length(1, 8).WithMessage(" O tipo deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Tipo).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Tipo"))
+                .Length(1, 8).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Tipo"));
            
-            RuleFor(p => p.Cpf).Length(0, 11).WithMessage(" O cpf deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Cpf).Length(0, 11).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("CPF"));
            
-            RuleFor(p => p.Cnpj).Length(0, 14).WithMessage(" O cnpj deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Cnpj).Length(0, 14).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("CNPJ"));
             
-            RuleFor(p => p.Sexo).NotEmpty().WithMessage("O campo sexo deve ser preenchido.")
-                .Length(6, 9).WithMessage(" O sexo deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Sexo).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Sexo"))
+                .Length(6, 9).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Sexo"));
 
-            RuleFor(p => p.EstadoCivil).Length(0, 10).WithMessage(" O estado civil deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.EstadoCivil).Length(0, 10).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Estado civíl"));
 
-            RuleFor(p => p.DataNascimento).NotEmpty().WithMessage("O campo data de nascimento deve ser preenchido.");
+            RuleFor(p => p.DataNascimento).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("data de Nascimento"));
 
-            RuleFor(p => p.Estado).NotEmpty().WithMessage("O campo estado deve ser preenchido.")
-                .Length(1, 25).WithMessage(" O estado deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Estado).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Estado"))
+                .Length(1, 25).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Estado"));
 
-            RuleFor(p => p.Cidade).NotEmpty().WithMessage("O campo  deve ser preenchido.")
-                .Length(1, 50).WithMessage("A cidade deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Cidade).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Cidade"))
+                .Length(1, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Cidade"));
 
-            RuleFor(p => p.Logradouro).NotEmpty().WithMessage("O campo logradouro deve ser preenchido.")
-                .Length(1, 100).WithMessage("O logradouro deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Logradouro).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Logradouro"))
+                .Length(1, 100).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Logradouro"));
 
-            RuleFor(p => p.NumeroEndereco).NotEmpty().WithMessage("O campo numero endereço  deve ser preenchido.")
-                .Length(1, 8).WithMessage("O numero endereço deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.NumeroEndereco).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Numero Endereço"))
+                .Length(1, 8).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Numero Endereço"));
 
-            RuleFor(p => p.Cep).Length(1, 10).WithMessage("O  deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Cep).Length(1, 10).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("CEP"));
 
-            RuleFor(p => p.Complemento).Length(0, 50).WithMessage("O  deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Complemento).Length(0, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Complemento"));
 
-            RuleFor(p => p.Papel).NotEmpty().WithMessage("O campo papel deve ser preenchido.")
-                .Length(1, 13).WithMessage("O papel deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Papel).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Papel"))
+                .Length(1, 13).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Papel"));
 
-            RuleFor(p => p.Login).NotEmpty().WithMessage("O campo login deve ser preenchido.")
-                .Length(3, 50).WithMessage("O login deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Login).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Login"))
+                .Length(3, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Login"));
 
-            RuleFor(p => p.Senha).NotEmpty().WithMessage("O campo senha deve ser preenchido.")
-                .Length(3, 50).WithMessage("A senha deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            RuleFor(p => p.Senha).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Senha"))
+                .Length(3, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Senha"));
 
 
         }
