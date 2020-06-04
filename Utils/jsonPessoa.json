@@ -1,10 +1,22 @@
 {
-  "exclude": [
-    "**/bin",
-    "**/bower_components",
-    "**/jspm_packages",
-    "**/node_modules",
-    "**/obj",
-    "**/platforms"
-  ]
+  "nome": "matheus",
+  "sobrenome": "castro",
+  "tipo": "fisica",
+  "ativo": "true",
+  "cpf": "04584765025",
+  "cnpj": "",
+  "sexo": "masculino",
+  "estadocivil": "casado",
+  "datanascimento": "1996/10/16",
+  "estado": "RS",
+  "cidade": "parobé",
+  "logradouro": "rua teste",
+  "numeroendereco": "4433",
+  "cep": "960000",
+  "complemento": "teste complemento",
+  "papel": "administrador",
+  "login": "mcastro@teste.com",
+  "senha": "123456",
+  "datacadastro": "2020/06/03"
+  
 }

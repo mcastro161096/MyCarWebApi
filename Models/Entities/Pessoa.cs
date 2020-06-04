@@ -48,7 +48,7 @@ namespace MyCarWebApi.Models
 
         public string Senha { get; set; }
 
-        public DateTime DataCadastro { get; private set; } 
+        public DateTime DataCadastro { get; set; } 
         [JsonIgnore]
         public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
         [JsonIgnore]

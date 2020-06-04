@@ -14,7 +14,7 @@ namespace MyCarWebApi.Models
         public PessoaValidator()
         {
             RuleFor(p => p.Nome).NotEmpty().WithMessage("O campo nome  deve ser preenchido.")
-            .Length(1, 100).WithMessage(" O nome  deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+            .Length(1, 100).WithMessage(" O nome  deve ter no mínimo {MinLength} e no máximo {MaxLength} caracteres.");
             
             RuleFor(p => p.Sobrenome).NotEmpty().WithMessage("O campo sobrenome  deve ser preenchido.")
                 .Length(1, 100).WithMessage(" O sobrenome deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
@@ -43,7 +43,7 @@ namespace MyCarWebApi.Models
                 .Length(1, 100).WithMessage("O logradouro deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
 
             RuleFor(p => p.NumeroEndereco).NotEmpty().WithMessage("O campo numero endereço  deve ser preenchido.")
-                .Length(8, 8).WithMessage("O numero endereço deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
+                .Length(1, 8).WithMessage("O numero endereço deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
 
             RuleFor(p => p.Cep).Length(1, 10).WithMessage("O  deve ter no mínimo {minLength} e no máximo {maxLength} caracteres.");
 

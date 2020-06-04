@@ -6,70 +6,60 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Routing;
+using System.Web.Http.Description;
+using FluentValidation;
 using MyCarWebApi.Models;
 
 namespace MyCarWebApi.Controllers
 {
-    /*
-    A classe WebApiConfig pode requerer alterações adicionais para adicionar uma rota para esse controlador.
-    Misture essas declarações no método Register da classe WebApiConfig conforme aplicável. Note que URLs OData diferenciam maiúsculas e minúsculas.
-
-    using System.Web.Http.OData.Builder;
-    using System.Web.Http.OData.Extensions;
-    using MyCarWebApi.Models;
-    ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<Pessoa>("Pessoas");
-    builder.EntitySet<Veiculo>("Veiculos"); 
-    config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
-    */
-    public class PessoasController : ODataController
+    public class PessoasController : ApiController
     {
         private WebApiContext db = new WebApiContext();
+        private PessoaValidator validadorPessoa = new PessoaValidator();
 
-        // GET: odata/Pessoas
-        [EnableQuery]
+        // GET: api/Pessoas
         public IQueryable<Pessoa> GetPessoas()
         {
             return db.Pessoas;
         }
 
-        // GET: odata/Pessoas(5)
-        [EnableQuery]
-        public SingleResult<Pessoa> GetPessoa([FromODataUri] int key)
+        // GET: api/Pessoas/5
+        [ResponseType(typeof(Pessoa))]
+        public IHttpActionResult GetPessoa(int id)
         {
-            return SingleResult.Create(db.Pessoas.Where(pessoa => pessoa.Id == key));
-        }
-
-        // PUT: odata/Pessoas(5)
-        public async Task<IHttpActionResult> Put([FromODataUri] int key, Delta<Pessoa> patch)
-        {
-            Validate(patch.GetEntity());
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            Pessoa pessoa = await db.Pessoas.FindAsync(key);
+            Pessoa pessoa = db.Pessoas.Find(id);
             if (pessoa == null)
             {
                 return NotFound();
             }
 
-            patch.Put(pessoa);
+            return Ok(pessoa);
+        }
+
+        // PUT: api/Pessoas/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutPessoa(int id, Pessoa pessoa)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != pessoa.Id)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(pessoa).State = EntityState.Modified;
 
             try
             {
-                await db.SaveChangesAsync();
+                db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PessoaExists(key))
+                if (!PessoaExists(id))
                 {
                     return NotFound();
                 }
@@ -79,81 +69,39 @@ namespace MyCarWebApi.Controllers
                 }
             }
 
-            return Updated(pessoa);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: odata/Pessoas
-        public async Task<IHttpActionResult> Post(Pessoa pessoa)
+        // POST: api/Pessoas
+        [ResponseType(typeof(Pessoa))]
+        public IHttpActionResult PostPessoa(Pessoa pessoa)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            validadorPessoa.ValidateAndThrow(pessoa);
 
             db.Pessoas.Add(pessoa);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
-            return Created(pessoa);
+            return CreatedAtRoute("DefaultApi", new { id = pessoa.Id }, pessoa);
         }
 
-        // PATCH: odata/Pessoas(5)
-        [AcceptVerbs("PATCH", "MERGE")]
-        public async Task<IHttpActionResult> Patch([FromODataUri] int key, Delta<Pessoa> patch)
+        // DELETE: api/Pessoas/5
+        [ResponseType(typeof(Pessoa))]
+        public IHttpActionResult DeletePessoa(int id)
         {
-            Validate(patch.GetEntity());
-
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            Pessoa pessoa = await db.Pessoas.FindAsync(key);
-            if (pessoa == null)
-            {
-                return NotFound();
-            }
-
-            patch.Patch(pessoa);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PessoaExists(key))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return Updated(pessoa);
-        }
-
-        // DELETE: odata/Pessoas(5)
-        public async Task<IHttpActionResult> Delete([FromODataUri] int key)
-        {
-            Pessoa pessoa = await db.Pessoas.FindAsync(key);
+            Pessoa pessoa = db.Pessoas.Find(id);
             if (pessoa == null)
             {
                 return NotFound();
             }
 
             db.Pessoas.Remove(pessoa);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
 
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // GET: odata/Pessoas(5)/Veiculos
-        [EnableQuery]
-        public IQueryable<Veiculo> GetVeiculos([FromODataUri] int key)
-        {
-            return db.Pessoas.Where(m => m.Id == key).SelectMany(m => m.Veiculos);
+            return Ok(pessoa);
         }
 
         protected override void Dispose(bool disposing)
@@ -165,9 +113,9 @@ namespace MyCarWebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PessoaExists(int key)
+        private bool PessoaExists(int id)
         {
-            return db.Pessoas.Count(e => e.Id == key) > 0;
+            return db.Pessoas.Count(e => e.Id == id) > 0;
         }
     }
 }
