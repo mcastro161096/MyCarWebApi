@@ -16,8 +16,14 @@ namespace MyCarWebApi.Utils.Messages
 
         public string MsgTamanhoMinEMaxDoCampo(string nomeCampo)
         {
-            var msgTamanhoMinEMaxDoCampo = $"Campo {nomeCampo}  deve ter no mínimo" + "{MinLength} e no máximo {MaxLength} caracteres.";
+            var msgTamanhoMinEMaxDoCampo = $"Campo {nomeCampo}  deve ter no mínimo" + " {MinLength} e no máximo {MaxLength} caracteres.";
             return msgTamanhoMinEMaxDoCampo;
+        }
+
+        public string MsgBooleanoNaoPodeSerNulo(string nomeCampo)
+        {
+            var msgBooleanoNaoPodeSerNulo = $"O campo {nomeCampo} não pode ser nulo, deve ser true ou false";
+            return msgBooleanoNaoPodeSerNulo;
         }
     }
 }

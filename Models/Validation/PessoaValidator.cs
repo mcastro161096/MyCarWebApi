@@ -48,7 +48,7 @@ namespace MyCarWebApi.Models
             RuleFor(p => p.NumeroEndereco).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Numero Endereço"))
                 .Length(1, 8).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Numero Endereço"));
 
-            RuleFor(p => p.Cep).Length(1, 10).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("CEP"));
+            RuleFor(p => p.Cep).Length(0, 10).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("CEP"));
 
             RuleFor(p => p.Complemento).Length(0, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Complemento"));
 
@@ -60,6 +60,9 @@ namespace MyCarWebApi.Models
 
             RuleFor(p => p.Senha).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Senha"))
                 .Length(3, 50).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Senha"));
+
+            RuleFor(p => p.Ativo).NotNull().WithMessage(Msg.MsgBooleanoNaoPodeSerNulo("Ativo"));
+
 
 
         }

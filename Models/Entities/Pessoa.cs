@@ -51,7 +51,7 @@ namespace MyCarWebApi.Models
         public DateTime DataCadastro { get; set; } 
         [JsonIgnore]
         public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
-        [JsonIgnore]
+        
         public virtual ICollection<Veiculo> Veiculos { get; set; }
 
 

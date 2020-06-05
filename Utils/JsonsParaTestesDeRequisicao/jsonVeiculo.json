@@ -1,0 +1,11 @@
+{
+  "pessoaId": "1",
+  "tipoDeVeiculo": "carro",
+  "marca": "Ford",
+  "modelo": "Ranger",
+  "serie": "Limited Edition",
+  "ano": "2020",
+  "cor": "Grafite",
+  "ativo": true
+  
+}

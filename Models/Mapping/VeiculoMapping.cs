@@ -26,7 +26,9 @@ namespace MyCarWebApi.Models
 
 
             HasRequired<Pessoa>(v => v.Pessoa).WithMany(p => p.Veiculos)
+                                                .HasForeignKey(m => m.PessoaId)
                                                 .WillCascadeOnDelete();
+                                                
         }
 
     }

@@ -183,6 +183,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PessoasController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VeiculosController.cs" />
     <Compile Include="Filters\BasicAuhtenticationAttribute.cs" />
     <Compile Include="Filters\ResultadoValidacao.cs" />
     <Compile Include="Filters\ValidationExceptionFiltersAttribute.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Areas\HelpPage\Views\_ViewStart.cshtml" />
     <Content Include="Content\Site.css" />
     <Content Include="Utils\JsonsParaTestesDeRequisicao\jsonPessoa.json" />
+    <Content Include="Utils\JsonsParaTestesDeRequisicao\jsonVeiculo.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

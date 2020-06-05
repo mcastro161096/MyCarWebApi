@@ -29,12 +29,12 @@ namespace MyCarWebApi.Models
 
         public string Cor { get; set; }
 
-        public bool Ativo { get; set; } = true;
+        public bool Ativo { get; set; } 
 
         [JsonIgnore]
         public DateTime Dataatualizacao { get; private set; } = DateTime.Now;
         
-        [JsonIgnore]
+        
         public virtual ICollection<ServicoPrestado> ServicosPrestados { get; set; }
 
     }

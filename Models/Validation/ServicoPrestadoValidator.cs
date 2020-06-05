@@ -26,6 +26,7 @@ namespace MyCarWebApi.Models
 
             RuleFor(s => s.DataServico).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Data Serviço"));
 
+            RuleFor(s => s.Ativo).NotNull().WithMessage(Msg.MsgBooleanoNaoPodeSerNulo("Ativo"));
 
         }
 

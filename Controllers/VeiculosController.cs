@@ -13,47 +13,48 @@ using MyCarWebApi.Models;
 
 namespace MyCarWebApi.Controllers
 {
-    public class PessoasController : ApiController
+    public class VeiculosController : ApiController
     {
         private WebApiContext db = new WebApiContext();
-        private PessoaValidator validadorPessoa = new PessoaValidator();
+        private VeiculoValidator validadorVeiculo = new VeiculoValidator();
 
-        // GET: api/Pessoas
-        public IQueryable<Pessoa> GetPessoas()
+
+        // GET: api/Veiculos
+        public IQueryable<Veiculo> GetVeiculos()
         {
-            return db.Pessoas;
+            return db.Veiculos;
         }
 
-        // GET: api/Pessoas/5
-        [ResponseType(typeof(Pessoa))]
-        public IHttpActionResult GetPessoa(int id)
+        // GET: api/Veiculos/5
+        [ResponseType(typeof(Veiculo))]
+        public IHttpActionResult GetVeiculo(int id)
         {
-            Pessoa pessoa = db.Pessoas.Find(id);
-            if (pessoa == null)
+            Veiculo veiculo = db.Veiculos.Find(id);
+            if (veiculo == null)
             {
                 return NotFound();
             }
 
-            return Ok(pessoa);
+            return Ok(veiculo);
         }
 
-        // PUT: api/Pessoas/5
+        // PUT: api/Veiculos/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutPessoa(int id, Pessoa pessoa)
+        public IHttpActionResult PutVeiculo(int id, Veiculo veiculo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != pessoa.Id)
+            if (id != veiculo.Id)
             {
                 return BadRequest();
             }
-            validadorPessoa.ValidateAndThrow(pessoa);
+            validadorVeiculo.ValidateAndThrow(veiculo);
 
 
-            db.Entry(pessoa).State = EntityState.Modified;
+            db.Entry(veiculo).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +62,7 @@ namespace MyCarWebApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PessoaExists(id))
+                if (!VeiculoExists(id))
                 {
                     return NotFound();
                 }
@@ -74,36 +75,36 @@ namespace MyCarWebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Pessoas
-        [ResponseType(typeof(Pessoa))]
-        public IHttpActionResult PostPessoa(Pessoa pessoa)
+        // POST: api/Veiculos
+        [ResponseType(typeof(Veiculo))]
+        public IHttpActionResult PostVeiculo(Veiculo veiculo)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            validadorPessoa.ValidateAndThrow(pessoa);
+            validadorVeiculo.ValidateAndThrow(veiculo);
 
-            db.Pessoas.Add(pessoa);
+            db.Veiculos.Add(veiculo);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = pessoa.Id }, pessoa);
+            return CreatedAtRoute("DefaultApi", new { id = veiculo.Id }, veiculo);
         }
 
-        // DELETE: api/Pessoas/5
-        [ResponseType(typeof(Pessoa))]
-        public IHttpActionResult DeletePessoa(int id)
+        // DELETE: api/Veiculos/5
+        [ResponseType(typeof(Veiculo))]
+        public IHttpActionResult DeleteVeiculo(int id)
         {
-            Pessoa pessoa = db.Pessoas.Find(id);
-            if (pessoa == null)
+            Veiculo veiculo = db.Veiculos.Find(id);
+            if (veiculo == null)
             {
                 return NotFound();
             }
 
-            db.Pessoas.Remove(pessoa);
+            db.Veiculos.Remove(veiculo);
             db.SaveChanges();
 
-            return Ok(pessoa);
+            return Ok(veiculo);
         }
 
         protected override void Dispose(bool disposing)
@@ -115,9 +116,9 @@ namespace MyCarWebApi.Controllers
             base.Dispose(disposing);
         }
 
-        private bool PessoaExists(int id)
+        private bool VeiculoExists(int id)
         {
-            return db.Pessoas.Count(e => e.Id == id) > 0;
+            return db.Veiculos.Count(e => e.Id == id) > 0;
         }
     }
 }

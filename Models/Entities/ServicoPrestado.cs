@@ -36,7 +36,7 @@ namespace MyCarWebApi.Models
         public DateTime DataServico { get; set; }
 
 
-        public bool Ativo { get; set; } = true;
+        public bool Ativo { get; set; } 
 
         [JsonIgnore]
         public DateTime Dataatualizacao { get; set; } = DateTime.Now;

@@ -31,6 +31,8 @@ namespace MyCarWebApi.Models
 
             RuleFor(v => v.Cor).NotEmpty().WithMessage(Msg.MsgPreencherCampoVazioObrigatorio("Cor"))
                 .Length(1, 20).WithMessage(Msg.MsgTamanhoMinEMaxDoCampo("Cor"));
+
+            RuleFor(v => v.Ativo).NotNull().WithMessage(Msg.MsgBooleanoNaoPodeSerNulo("Ativo"));
         }
 
     }
